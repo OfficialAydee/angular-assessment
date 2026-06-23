@@ -1,7 +1,6 @@
-.history/
+.history
 
-./mock-api/node_modules/*
+./mock-api/node_modules/
 ./mock-api/package-lock.json
 
-./frontend/node_modules/*
-./frontend/.vscode
+./frontend/node_modules/
