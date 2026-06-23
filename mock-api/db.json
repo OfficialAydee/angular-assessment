@@ -1,0 +1,37 @@
+{
+  "companies": [
+    {
+      "id": "1",
+      "name": "JEX",
+      "address": "Rotterdam"
+    },
+    {
+      "id": "2",
+      "name": "TechFlow",
+      "address": "Amsterdam"
+    }
+  ],
+  "vacancies": [
+    {
+      "id": "1",
+      "companyId": "1",
+      "title": "Angular Developer",
+      "description": "Build modern Angular applications.",
+      "isActive": true
+    },
+    {
+      "id": "2",
+      "companyId": "1",
+      "title": "UX Engineer",
+      "description": "Improve user flows and frontend experiences.",
+      "isActive": false
+    },
+    {
+      "id": "3",
+      "companyId": "2",
+      "title": "Frontend Developer",
+      "description": "Create scalable frontend features.",
+      "isActive": true
+    }
+  ]
+}
