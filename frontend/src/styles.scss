@@ -1,1 +1,197 @@
+/* Importing Bootstrap SCSS file. */
+@use 'bootstrap/scss/bootstrap';
+
 /* You can add global styles to this file, and also import other style files */
+:root {
+  /* Brand */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+
+  /* Backgrounds */
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+
+  /* Text */
+  --color-text-primary: #111827;
+  --color-text-secondary: #6b7280;
+
+  /* Borders */
+  --color-border: #e5e7eb;
+
+  /* States */
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-danger: #dc2626;
+
+  /* Sidebar */
+  --color-sidebar: #111827;
+  --color-sidebar-hover: #1f2937;
+  --color-sidebar-text: #d1d5db;
+
+  /* Avatar / Accent */
+  --color-accent-light: #e0ecff;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 10%);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 10%);
+
+  /* Layout */
+  --sidebar-width: 280px;
+  --header-height: 80px;
+
+  --input-height: 44px;
+  --table-row-height: 52px;
+  --content-max-width: 1400px;
+}
+
+body.dark-mode {
+  /* Brand */
+  --color-primary: #60a5fa;
+  --color-primary-hover: #3b82f6;
+
+  /* Backgrounds */
+  --color-background: #0f172a;
+  --color-surface: #111827;
+  --color-surface-soft: #1f2937;
+
+  /* Text */
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #9ca3af;
+
+  /* Borders */
+  --color-border: #374151;
+
+  /* States */
+  --color-success: #22c55e;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+
+  /* Sidebar */
+  --color-sidebar: #020617;
+  --color-sidebar-hover: #1e293b;
+  --color-sidebar-text: #cbd5e1;
+
+  /* Accent */
+  --color-accent-light: #1e3a8a;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 35%);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 45%);
+}
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+.text-danger {
+  color: var(--color-danger);
+}
+
+.text-warning {
+  color: var(--color-warning);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.bg-primary {
+  background: var(--color-primary);
+}
+
+.bg-surface {
+  background: var(--color-surface);
+}
+
+.bg-background {
+  background: var(--color-background);
+}
+
+.bg-success {
+  background: var(--color-success);
+}
+
+.bg-danger {
+  background: var(--color-danger);
+}
+
+.bg-warning {
+  background: var(--color-warning);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem; // 40px
+}
+
+h2 {
+  font-size: 2rem; // 32px
+}
+
+h3 {
+  font-size: 1.5rem; // 24px
+}
+
+h4 {
+  font-size: 1.25rem; // 20px
+}
+
+h5 {
+  font-size: 1.125rem; // 18px
+}
+
+h6 {
+  font-size: 1rem; // 16px
+}
+
+p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+small {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}

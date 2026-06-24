@@ -19,15 +19,10 @@ Voor dit assessment heb ik een oplossing gebouwd op basis van Angular 21 en een 
 ## Inhoudsopgave
 
 - [Technische keuzes](#technische-keuzes)
-
 - [Architectuur](#architectuur)
-
 - [Installatie & opstarten](#installatie--opstarten)
-
 - [Functionaliteiten](#functionaliteiten)
-
 - [Tijdsbesteding](#tijdsbesteding)
-
 - [AI gebruik](#ai-gebruik)
 
 ---
@@ -36,7 +31,7 @@ Voor dit assessment heb ik een oplossing gebouwd op basis van Angular 21 en een 
 
 ### Front-end
 
-- Angular 21
+- Angular 22
 - Standalone Components
 - Reactive Forms
 - Angular Router
@@ -113,12 +108,14 @@ http://localhost:4200
 
 ### 4. Beschikbare pagina's
 
-| Route             | Omschrijving                            |
-| ----------------- | --------------------------------------- |
-| `/companies`      | Beheer van bedrijven                    |
-| `/vacancies`      | Beheer van vacatures                    |
-| `/create-vacancy` | Aanmaken van een nieuwe vacature        |
-| `/jobs`           | Publiek overzicht van actieve vacatures |
+
+| Route                   | Omschrijving                            |
+| ----------------------- | --------------------------------------- |
+| `/backoffice/companies` | Beheer van bedrijven                    |
+| `/backoffice/vacancies` | Beheer van vacatures                    |
+| `/create-vacancy`       | Aanmaken van een nieuwe vacature        |
+| `/jobs`                 | Publiek overzicht van actieve vacatures |
+
 
 ### Opmerking
 
@@ -128,7 +125,8 @@ De mock API maakt gebruik van in-memory opslag. Wijzigingen blijven actief zolan
 
 Totale tijd besteed aan deze opdracht: **[X uur]**
 
-- Dinsdag 23 juni 2026: 19.40 - 21.15
+- Dinsdag 23 juni 2026: 19.40 - 21.00
+- Woensdag 24 juni 2026: 20.17- 21.00
 
 ## AI gebruik
 
