@@ -20,6 +20,8 @@ export class VacancyCreate {
   vacancyForm = this.fb.nonNullable.group({
     title: ['', Validators.required],
     description: ['', Validators.required],
+    location: ['', Validators.required],
+    salary: ['', Validators.required],
     isActive: [true],
   });
 

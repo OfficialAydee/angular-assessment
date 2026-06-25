@@ -49,14 +49,17 @@
 
     <div class="card border-0 shadow-sm">
         <div class="card-body p-4">
-            <h2 class="h5 mb-3">Vacature-informatie</h2>
+            <h2 class="h5 mb-3">Vacature informatie</h2>
 
             <dl class="row mb-0">
                 <dt class="col-sm-3 text-muted">Titel</dt>
                 <dd class="col-sm-9">{{ vacancy.title }}</dd>
 
-                <dt class="col-sm-3 text-muted">Omschrijving</dt>
-                <dd class="col-sm-9">{{ vacancy.description }}</dd>
+                <dt class="col-sm-3 text-muted">Locatie</dt>
+                <dd class="col-sm-9">{{ vacancy.location }}</dd>
+
+                <dt class="col-sm-3 text-muted">Salaris</dt>
+                <dd class="col-sm-9">{{ vacancy.salary }}</dd>
 
                 <dt class="col-sm-3 text-muted">Status</dt>
                 <dd class="col-sm-9">
@@ -65,6 +68,16 @@
                     } @else {
                     Inactief
                     }
+                </dd>
+
+                <dt class="col-12 text-muted mb-2">
+                    Omschrijving:
+                </dt>
+
+                <dd class="col-12">
+                    <p class="mb-0 description">
+                        {{ vacancy.description }}
+                    </p>
                 </dd>
             </dl>
         </div>

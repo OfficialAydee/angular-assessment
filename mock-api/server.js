@@ -126,7 +126,8 @@ app.get("/api/vacancies/:id", (req, res) => {
 });
 
 app.post("/api/vacancies", (req, res) => {
-  const { companyId, title, description, isActive } = req.body;
+  const { companyId, title, description, location, salary, isActive } =
+    req.body;
 
   if (!companyId || !title) {
     return res.status(400).json({
@@ -146,6 +147,8 @@ app.post("/api/vacancies", (req, res) => {
     id: crypto.randomUUID(),
     companyId,
     title,
+    location,
+    salary,
     description: description ?? "",
     isActive: isActive ?? true,
   };

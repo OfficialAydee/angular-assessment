@@ -4,4 +4,6 @@ export interface VacancyModel {
   title: string;
   description: string;
   isActive: boolean;
+  location: string;
+  salary: string;
 }
