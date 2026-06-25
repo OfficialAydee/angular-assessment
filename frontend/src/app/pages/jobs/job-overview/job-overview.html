@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <div class="mb-4">
+        <p class="text-primary fw-semibold mb-1">Vacatures</p>
+        <h1 class="h3 mb-2">Bedrijven met actieve vacatures</h1>
+        <p class="text-muted mb-0">Bekijk bedrijven met minimaal één actieve vacature.</p>
+    </div>
+
+    @if (isLoading()) {
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+            <p class="text-muted mb-0">Vacatures laden...</p>
+        </div>
+    </div>
+    }
+
+    @if (errorMessage()) {
+    <div class="alert alert-danger">
+        {{ errorMessage() }}
+    </div>
+    }
+
+    @if (!isLoading() && !errorMessage()) {
+    @if (companiesWithActiveVacancies().length > 0) {
+    <div class="d-flex flex-column gap-4">
+        @for (company of companiesWithActiveVacancies(); track company.id) {
+        <article class="card border-0 shadow-sm company-card">
+            <div class="card-header bg-white p-4">
+                <div class="d-flex justify-content-between align-items-start gap-4">
+                    <div>
+                        <h2 class="h5 mb-2">{{ company.name }}</h2>
+
+                        <p class="text-muted mb-1">
+                            {{ company.street }} {{ company.houseNumber }}{{ company.houseNumberAddition }}
+                        </p>
+
+                        <p class="text-muted mb-0">
+                            {{ company.postalCode }} {{ company.city }}, {{ company.country }}
+                        </p>
+                    </div>
+
+                    <div class="text-end">
+                        <span class="badge text-bg-primary mb-2">
+                            {{ company.vacancies.length }}
+                            {{ company.vacancies.length === 1 ? 'vacature' : 'vacatures' }}
+                        </span>
+
+                        @if (company.websiteUrl) {
+                        <div>
+                            <a [href]="company.websiteUrl" target="_blank" rel="noopener noreferrer" class="small text-decoration-none">
+                                Website bekijken
+                            </a>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-column gap-3 p-4">
+                @for (vacancy of company.vacancies; track vacancy.id) {
+                <a class="card border-0 shadow-sm hover-card text-decoration-none" [routerLink]="['/jobs', company.id, 'vacancies', vacancy.id]">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start gap-4">
+                            <div class="d-flex gap-3">
+                                <div class="vacancy-icon">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+
+                                <div>
+                                    <h3 class="h6 mb-2 text-dark">
+                                        {{ vacancy.title }}
+                                    </h3>
+
+                                    <p class="text-muted mb-0">
+                                        {{ vacancy.description }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="badge text-bg-success"> Actief </span>
+
+                                <i class="fa-solid fa-arrow-right arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                }
+            </div>
+        </article>
+        }
+    </div>
+    } @else {
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-5 text-center">
+            <h2 class="h5 mb-2">Geen actieve vacatures</h2>
+            <p class="text-muted mb-0">Er zijn momenteel geen bedrijven met actieve vacatures.</p>
+        </div>
+    </div>
+    }
+    }
+</div>

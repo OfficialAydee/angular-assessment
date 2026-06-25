@@ -1,0 +1,51 @@
+.company-card {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.vacancy-card {
+  display: block;
+  padding: 1.25rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.875rem;
+  background: var(--bs-body-bg);
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--bs-primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    .arrow {
+      transform: translateX(4px);
+      color: var(--bs-primary);
+    }
+
+    .vacancy-icon {
+      background: var(--bs-primary);
+      color: #fff;
+    }
+  }
+}
+
+.vacancy-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 0.75rem;
+
+  background: rgba(var(--bs-primary-rgb), 0.1);
+  color: var(--bs-primary);
+
+  transition: all 0.2s ease;
+}
+
+.arrow {
+  color: var(--bs-secondary-color);
+  transition: all 0.2s ease;
+}
