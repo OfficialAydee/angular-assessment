@@ -1,1 +1,75 @@
-<p>job-details works!</p>
+<div class="container-fluid">
+    <a routerLink="/jobs" class="text-decoration-none"> ← Terug naar vacatures </a>
+
+    @if (isLoading()) {
+    <div class="card border-0 mt-4">
+        <div class="card-body p-4">
+            <p class="text-muted mb-0">Vacature laden...</p>
+        </div>
+    </div>
+    }
+
+    @if (errorMessage()) {
+    <div class="alert alert-danger mt-4">
+        {{ errorMessage() }}
+    </div>
+    }
+
+    @if (company(); as company) {
+    @if (vacancy(); as vacancy) {
+    <div class="row mt-4 g-4">
+        <div class="col-12 col-xl-8">
+            <article class="card border-0">
+                <div class="card-body p-4 p-lg-5">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div>
+                            <span class="badge text-bg-success mb-2">Actief</span>
+                            <h1 class="h3 mb-2">{{ vacancy.title }}</h1>
+                            <div class="d-flex flex-column">
+                                <span class="mb-1">Locatie: {{vacancy.location}}</span>
+                                <span class="mb-1">Salaris: {{vacancy.salary}}</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <h2 class="h5 mb-3">Omschrijving:</h2>
+
+                    <p class="text-muted mb-0 description">
+                        {{ vacancy.description }}
+                    </p>
+                </div>
+            </article>
+        </div>
+
+        <div class="col-12 col-xl-4">
+            <aside class="card border-0">
+                <div class="card-body p-4">
+                    <h2 class="h5 mb-3">Bedrijf</h2>
+
+                    <h3 class="h6 mb-2">{{ company.name }}</h3>
+
+                    <p class="text-muted mb-1">
+                        {{ company.street }} {{ company.houseNumber }}{{ company.houseNumberAddition }}
+                    </p>
+
+                    <p class="text-muted mb-1">{{ company.postalCode }} {{ company.city }}</p>
+
+                    <p class="text-muted mb-4">
+                        {{ company.country }}
+                    </p>
+
+                    @if (company.websiteUrl) {
+                    <a [href]="company.websiteUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary w-100">
+                        Website bekijken
+                    </a>
+                    }
+                </div>
+            </aside>
+        </div>
+    </div>
+    }
+    }
+</div>

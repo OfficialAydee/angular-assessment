@@ -73,6 +73,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/jobs/job-overview/job-overview').then((m) => m.JobOverview),
       },
+      {
+        path: 'jobs/:companyId/vacancies/:vacancyId',
+        title: 'Vacancy details | Vacaturepunt',
+        loadComponent: () =>
+          import('./pages/jobs/job-details/job-details').then((m) => m.JobDetails),
+      },
     ],
   },
   {

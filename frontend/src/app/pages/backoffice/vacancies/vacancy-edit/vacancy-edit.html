@@ -36,7 +36,27 @@
                     }
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-3">
+                    <label class="form-label">Locatie *</label>
+
+                    <input type="text" class="form-control" formControlName="location" placeholder="Bijvoorbeeld: Den Haag" />
+
+                    @if (vacancyForm.controls.location.touched && vacancyForm.controls.location.invalid) {
+                    <small class="text-danger">Locatie is verplicht.</small>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Salaris indicatie *</label>
+
+                    <input type="text" class="form-control" formControlName="salary" placeholder="Bijvoorbeeld: 4500 - 6000" />
+
+                    @if (vacancyForm.controls.salary.touched && vacancyForm.controls.salary.invalid) {
+                    <small class="text-danger">Salaris indicatie is verplicht.</small>
+                    }
+                </div>
+
+                <div class="mb-3">
                     <label class="form-label">Omschrijving *</label>
 
                     <textarea rows="6" class="form-control" formControlName="description"></textarea>
