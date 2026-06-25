@@ -23,6 +23,8 @@ export class VacancyEdit {
   vacancyForm = this.fb.nonNullable.group({
     title: ['', Validators.required],
     description: ['', Validators.required],
+    location: ['', Validators.required],
+    salary: ['', Validators.required],
     isActive: [true],
   });
 
@@ -41,6 +43,8 @@ export class VacancyEdit {
         this.vacancyForm.patchValue({
           title: vacancy.title,
           description: vacancy.description,
+          location: vacancy.location,
+          salary: vacancy.salary,
           isActive: vacancy.isActive,
         });
         this.isLoading.set(false);
