@@ -196,6 +196,10 @@ small {
   color: var(--color-text-secondary);
 }
 
+.card {
+  border-radius: var(--radius-md);
+}
+
 .hover-card {
   cursor: pointer;
   position: relative;
