@@ -12,23 +12,65 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
       {
-        path: 'jobs',
-        loadComponent: () => import('./pages/jobs/jobs').then((m) => m.Jobs),
-      },
-      {
-        path: 'create-vacancy',
-        loadComponent: () =>
-          import('./pages/create-vacancy/create-vacancy').then((m) => m.CreateVacancy),
-      },
-      {
         path: 'backoffice/companies',
+        title: 'Companies | Vacaturepunt',
         loadComponent: () =>
-          import('./pages/backoffice/companies/companies').then((m) => m.Companies),
+          import('./pages/backoffice/companies/company-overview/company-overview').then(
+            (m) => m.CompanyOverview,
+          ),
       },
       {
-        path: 'backoffice/vacancies',
+        path: 'backoffice/companies/create',
+        title: 'Create company | Vacaturepunt',
         loadComponent: () =>
-          import('./pages/backoffice/vacancies/vacancies').then((m) => m.Vacancies),
+          import('./pages/backoffice/companies/company-create/company-create').then(
+            (m) => m.CompanyCreate,
+          ),
+      },
+      {
+        path: 'backoffice/companies/:companyId',
+        title: 'Company detail | Vacaturepunt',
+        loadComponent: () =>
+          import('./pages/backoffice/companies/company-details/company-details').then(
+            (m) => m.CompanyDetails,
+          ),
+      },
+      {
+        path: 'backoffice/companies/:companyId/edit',
+        title: 'Edit company | Vacaturepunt',
+        loadComponent: () =>
+          import('./pages/backoffice/companies/company-edit/company-edit').then(
+            (m) => m.CompanyEdit,
+          ),
+      },
+      {
+        path: 'backoffice/companies/:companyId/vacancies/create',
+        title: 'Create vacancy | Vacaturepunt',
+        loadComponent: () =>
+          import('./pages/backoffice/vacancies/vacancy-create/vacancy-create').then(
+            (m) => m.VacancyCreate,
+          ),
+      },
+      {
+        path: 'backoffice/companies/:companyId/vacancies/:vacancyId',
+        title: 'Vacancy details | Vacaturepunt',
+        loadComponent: () =>
+          import('./pages/backoffice/vacancies/vacancy-details/vacancy-details').then(
+            (m) => m.VacancyDetails,
+          ),
+      },
+      {
+        path: 'backoffice/companies/:companyId/vacancies/:vacancyId/edit',
+        title: 'Edit vacancy | Vacaturepunt',
+        loadComponent: () =>
+          import('./pages/backoffice/vacancies/vacancy-edit/vacancy-edit').then(
+            (m) => m.VacancyEdit,
+          ),
+      },
+      {
+        path: 'jobs',
+        title: 'Jobs | Vacaturepunt',
+        loadComponent: () => import('./pages/jobs/jobs').then((m) => m.Jobs),
       },
     ],
   },

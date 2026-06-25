@@ -1,30 +1,44 @@
-<aside class="bg-dark text-white p-4 min-vh-100" style="width: 280px;">
-    <div class="d-flex align-items-center gap-3 mb-5">
-        <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center fw-bold" style="width: 44px; height: 44px;">
-            V
+<aside class="sidebar" [class.sidebar--collapsed]="isCollapsed()">
+    <div class="sidebar__top">
+        <div class="sidebar__brand">
+            <div class="sidebar__logo">V</div>
+
+            @if (!isCollapsed()) {
+            <div>
+                <h1>Vacaturepunt</h1>
+                <p>JEX Assessment</p>
+            </div>
+            }
         </div>
 
-        <div>
-            <h1 class="h5 mb-0 text-white">Vacaturepunt</h1>
-            <small class="text-white-50">JEX Assessment</small>
-        </div>
+        <button class="sidebar__toggle" type="button" (click)="toggleSidebar()">
+            {{ isCollapsed() ? '→' : '←' }}
+        </button>
     </div>
 
-    <nav class="nav flex-column gap-2">
-        <a routerLink="/jobs" routerLinkActive="active" class="nav-link text-white-50 rounded-3 px-3">
-            Jobs
+    <nav class="sidebar__nav">
+        @if (!isCollapsed()) {
+        <span class="sidebar__section">Public</span>
+        }
+
+        <a routerLink="/jobs" routerLinkActive="active" class="sidebar__link" title="Jobs">
+            <span class="sidebar__icon">◦</span>
+
+            @if (!isCollapsed()) {
+            <span>Jobs</span>
+            }
         </a>
 
-        <a routerLink="/backoffice/companies" routerLinkActive="active" class="nav-link text-white-50 rounded-3 px-3">
-            Companies
-        </a>
+        @if (!isCollapsed()) {
+        <span class="sidebar__section mt-4">Backoffice</span>
+        }
 
-        <a routerLink="/backoffice/vacancies" routerLinkActive="active" class="nav-link text-white-50 rounded-3 px-3">
-            Vacancies
-        </a>
+        <a routerLink="/backoffice/companies" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" class="sidebar__link" title="Companies">
+            <span class="sidebar__icon">◦</span>
 
-        <a routerLink="/create-vacancy" routerLinkActive="active" class="nav-link text-white-50 rounded-3 px-3">
-            Create vacancy
+            @if (!isCollapsed()) {
+            <span>Companies</span>
+            }
         </a>
     </nav>
 </aside>

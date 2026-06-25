@@ -109,12 +109,12 @@ http://localhost:4200
 ### 4. Beschikbare pagina's
 
 
-| Route                   | Omschrijving                            |
-| ----------------------- | --------------------------------------- |
-| `/backoffice/companies` | Beheer van bedrijven                    |
-| `/backoffice/vacancies` | Beheer van vacatures                    |
-| `/create-vacancy`       | Aanmaken van een nieuwe vacature        |
-| `/jobs`                 | Publiek overzicht van actieve vacatures |
+| Route                   | Omschrijving                                   |
+| ----------------------- | ---------------------------------------------- |
+| `/backoffice/companies` | Beheer van bedrijven als backoffice medewerker |
+| `/backoffice/vacancies` | Beheer van vacatures als backoffice medewerker |
+| `/create-vacancy`       | Aanmaken van een nieuwe vacature               |
+| `/jobs`                 | Publiek overzicht van actieve vacatures        |
 
 
 ### Opmerking
