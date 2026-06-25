@@ -38,18 +38,33 @@ app.get("/api/companies/:id", (req, res) => {
 });
 
 app.post("/api/companies", (req, res) => {
-  const { name, address } = req.body;
+  const {
+    name,
+    websiteUrl,
+    street,
+    houseNumber,
+    houseNumberAddition,
+    postalCode,
+    city,
+    country,
+  } = req.body;
 
-  if (!name || !address) {
+  if (!name || !street || !houseNumber || !postalCode || !city || !country) {
     return res.status(400).json({
-      message: "Name and address are required",
+      message: "Name and address fields are required",
     });
   }
 
   const company = {
     id: crypto.randomUUID(),
     name,
-    address,
+    websiteUrl: websiteUrl ?? "",
+    street,
+    houseNumber,
+    houseNumberAddition: houseNumberAddition ?? "",
+    postalCode,
+    city,
+    country,
   };
 
   companies.push(company);
@@ -89,6 +104,14 @@ app.delete("/api/companies/:id", (req, res) => {
 
 // Vacancies
 app.get("/api/vacancies", (req, res) => {
+  const { companyId } = req.query;
+
+  if (companyId) {
+    return res.json(
+      vacancies.filter((vacancy) => vacancy.companyId === companyId),
+    );
+  }
+
   res.json(vacancies);
 });
 

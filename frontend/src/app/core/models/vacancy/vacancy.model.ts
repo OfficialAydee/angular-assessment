@@ -1,4 +1,4 @@
-export interface Vacancy {
+export interface VacancyModel {
   id: string;
   companyId: string;
   title: string;
