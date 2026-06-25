@@ -3,12 +3,24 @@
     {
       "id": "1",
       "name": "JEX",
-      "address": "Rotterdam"
+      "websiteUrl": "https://www.jex.nl",
+      "street": "Weena",
+      "houseNumber": "200",
+      "houseNumberAddition": "",
+      "postalCode": "3012 NJ",
+      "city": "Rotterdam",
+      "country": "Nederland"
     },
     {
       "id": "2",
-      "name": "TechFlow",
-      "address": "Amsterdam"
+      "name": "Aurenix Creative Labs",
+      "websiteUrl": "https://www.aurenix-cl.com",
+      "street": "Laantje van Kempen",
+      "houseNumber": "38",
+      "houseNumberAddition": "",
+      "postalCode": "2548 LL",
+      "city": "Den Haag",
+      "country": "Nederland"
     }
   ],
   "vacancies": [

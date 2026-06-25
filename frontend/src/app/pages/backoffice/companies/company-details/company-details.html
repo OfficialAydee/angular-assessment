@@ -1,0 +1,117 @@
+<div class="container-fluid">
+    <a routerLink="/backoffice/companies" class="text-decoration-none"> ← Terug </a>
+
+    @if (isLoading()) {
+    <div class="card border-0 shadow-sm mt-4">
+        <div class="card-body p-4">
+            <p class="text-muted mb-0">Bedrijf laden...</p>
+        </div>
+    </div>
+    }
+
+    @if (errorMessage()) {
+    <div class="alert alert-danger mt-4">
+        {{ errorMessage() }}
+    </div>
+    }
+
+    @if (company(); as company) {
+    <div class="d-flex justify-content-between align-items-start mt-4 mb-4">
+        <div>
+            <h1 class="h3 mb-2">{{ company.name }}</h1>
+
+            <p class="text-muted mb-1">
+                {{ company.street }} {{ company.houseNumber }}{{ company.houseNumberAddition }}
+            </p>
+
+            <p class="text-muted mb-1">{{ company.postalCode }} {{ company.city }}</p>
+
+            <p class="text-muted mb-0">
+                {{ company.country }}
+            </p>
+        </div>
+
+        <div class="d-flex gap-2">
+            <a [routerLink]="['/backoffice/companies', company.id, 'edit']" class="btn btn-outline-primary">
+                Edit
+            </a>
+
+            <button type="button" class="btn btn-outline-danger" (click)="deleteCompany()">
+                Verwijder
+            </button>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body p-4">
+            <h2 class="h5 mb-3">Bedrijfsinformatie</h2>
+
+            <dl class="row mb-0">
+                <dt class="col-sm-3 text-muted">Naam</dt>
+                <dd class="col-sm-9">{{ company.name }}</dd>
+
+                <dt class="col-sm-3 text-muted">Website</dt>
+                <dd class="col-sm-9">
+                    @if (company.websiteUrl) {
+                    <a [href]="company.websiteUrl" target="_blank" rel="noopener noreferrer">
+                        {{ company.websiteUrl }}
+                    </a>
+                    } @else {
+                    <span class="text-muted">Geen website opgegeven</span>
+                    }
+                </dd>
+
+                <dt class="col-sm-3 text-muted">Adres</dt>
+                <dd class="col-sm-9">
+                    {{ company.street }} {{ company.houseNumber }} {{ company.houseNumberAddition }},
+                    {{ company.postalCode }} {{ company.city }},
+                    {{ company.country }}
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h2 class="h5 mb-1">Vacatures</h2>
+            <p class="text-muted mb-0">Beheer vacatures voor dit bedrijf.</p>
+        </div>
+
+        <a [routerLink]="['/backoffice/companies', company.id, 'vacancies', 'create']" class="btn btn-primary">
+            + Nieuwe vacature
+        </a>
+    </div>
+
+    @if (vacancies().length > 0) {
+    <div class="list-group shadow-sm">
+        @for (vacancy of vacancies(); track vacancy.id) {
+        <a [routerLink]="['/backoffice/companies', company.id, 'vacancies', vacancy.id]" class="list-group-item list-group-item-action p-4">
+            <div class="d-flex justify-content-between align-items-start">
+                <div>
+                    <h3 class="h6 mb-1">{{ vacancy.title }}</h3>
+                    <p class="text-muted mb-0">{{ vacancy.description }}</p>
+                </div>
+
+                @if (vacancy.isActive) {
+                <span class="badge text-bg-success">Actief</span>
+                } @else {
+                <span class="badge text-bg-secondary">Inactief</span>
+                }
+            </div>
+        </a>
+        }
+    </div>
+    } @else {
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-5 text-center">
+            <h3 class="h5 mb-2">Geen vacatures gevonden</h3>
+            <p class="text-muted mb-4">Maak de eerste vacature aan voor dit bedrijf.</p>
+
+            <a [routerLink]="['/backoffice/companies', company.id, 'vacancies', 'create']" class="btn btn-primary">
+                Nieuwe vacature
+            </a>
+        </div>
+    </div>
+    }
+    }
+</div>
