@@ -1,1 +1,73 @@
-<p>vacancy-details works!</p>
+<div class="container-fluid">
+    <a [routerLink]="['/backoffice/companies', companyId]" class="text-decoration-none">
+        ← Terug naar bedrijf
+    </a>
+
+    @if (isLoading()) {
+    <div class="card border-0 shadow-sm mt-4">
+        <div class="card-body p-4">
+            <p class="text-muted mb-0">Vacature laden...</p>
+        </div>
+    </div>
+    }
+
+    @if (errorMessage()) {
+    <div class="alert alert-danger mt-4">
+        {{ errorMessage() }}
+    </div>
+    }
+
+    @if (vacancy(); as vacancy) {
+    <div class="d-flex justify-content-between align-items-start mt-4 mb-4">
+        <div>
+            <p class="text-primary fw-semibold mb-1">Vacature</p>
+            <h1 class="h3 mb-2">{{ vacancy.title }}</h1>
+
+            @if (vacancy.isActive) {
+            <span class="badge text-bg-success">Actief</span>
+            } @else {
+            <span class="badge text-bg-secondary">Inactief</span>
+            }
+        </div>
+
+        <div class="d-flex gap-2">
+            <a [routerLink]="[
+            '/backoffice/companies',
+            companyId,
+            'vacancies',
+            vacancy.id,
+            'edit'
+          ]" class="btn btn-outline-primary">
+                Bewerken
+            </a>
+
+            <button type="button" class="btn btn-outline-danger" (click)="deleteVacancy()">
+                Verwijderen
+            </button>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm">
+        <div class="card-body p-4">
+            <h2 class="h5 mb-3">Vacature-informatie</h2>
+
+            <dl class="row mb-0">
+                <dt class="col-sm-3 text-muted">Titel</dt>
+                <dd class="col-sm-9">{{ vacancy.title }}</dd>
+
+                <dt class="col-sm-3 text-muted">Omschrijving</dt>
+                <dd class="col-sm-9">{{ vacancy.description }}</dd>
+
+                <dt class="col-sm-3 text-muted">Status</dt>
+                <dd class="col-sm-9">
+                    @if (vacancy.isActive) {
+                    Actief
+                    } @else {
+                    Inactief
+                    }
+                </dd>
+            </dl>
+        </div>
+    </div>
+    }
+</div>

@@ -14,6 +14,10 @@ export class VacancyService {
     return this.http.get<VacancyModel[]>(`${this.apiUrl}`);
   }
 
+  getVacancy(id: string) {
+    return this.http.get<VacancyModel>(`${this.apiUrl}/${id}`);
+  }
+
   getVacanciesByCompany(companyId: string) {
     return this.http.get<VacancyModel[]>(`${this.apiUrl}?companyId=${companyId}`);
   }
