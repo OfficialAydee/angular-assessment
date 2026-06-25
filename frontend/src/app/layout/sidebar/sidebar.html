@@ -1,7 +1,7 @@
-<aside class="sidebar" [class.sidebar--collapsed]="isCollapsed()">
-    <div class="sidebar__top">
-        <div class="sidebar__brand">
-            <div class="sidebar__logo">V</div>
+<aside class="sidebar" [class.sidebar-collapsed]="isCollapsed()">
+    <div class="header">
+        <div class="brand">
+            <div class="logo">V</div>
 
             @if (!isCollapsed()) {
             <div>
@@ -11,33 +11,38 @@
             }
         </div>
 
-        <button class="sidebar__toggle" type="button" (click)="toggleSidebar()">
-            {{ isCollapsed() ? '→' : '←' }}
+        <button type="button" class="toggle" (click)="toggleSidebar()" [attr.aria-label]="isCollapsed() ? 'Expand sidebar' : 'Collapse sidebar'">
+            @if (isCollapsed()) {
+            <i class="fa-solid fa-bars"></i>
+            }
+            @if (!isCollapsed()) {
+            <i class="fa-solid fa-bars-staggered"></i>
+            }
         </button>
     </div>
 
-    <nav class="sidebar__nav">
+    <nav class="navigation">
         @if (!isCollapsed()) {
-        <span class="sidebar__section">Public</span>
+        <span class="section-title">Public</span>
         }
 
-        <a routerLink="/jobs" routerLinkActive="active" class="sidebar__link" title="Jobs">
-            <span class="sidebar__icon">◦</span>
+        <a routerLink="/jobs" routerLinkActive="active" class="navigation-link" title="Jobs">
+            <span class="icon"><i class="fa-solid fa-briefcase"></i></span>
 
             @if (!isCollapsed()) {
-            <span>Jobs</span>
+            <span>Vacatures</span>
             }
         </a>
 
         @if (!isCollapsed()) {
-        <span class="sidebar__section mt-4">Backoffice</span>
+        <span class="section-title mt-4">Backoffice</span>
         }
 
-        <a routerLink="/backoffice/companies" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" class="sidebar__link" title="Companies">
-            <span class="sidebar__icon">◦</span>
+        <a routerLink="/backoffice/companies" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: false }" class="navigation-link" title="Companies">
+            <span class="icon"><i class="fa-regular fa-building"></i></span>
 
             @if (!isCollapsed()) {
-            <span>Companies</span>
+            <span>Bedrijven</span>
             }
         </a>
     </nav>

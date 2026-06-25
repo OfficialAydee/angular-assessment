@@ -2,18 +2,18 @@
     <div class="d-flex justify-content-between align-items-start mb-4">
         <div>
             <p class="text-primary fw-semibold mb-1">Backoffice</p>
-            <h1 class="h3 mb-2">Companies</h1>
+            <h1 class="h3 mb-2">Bedrijven</h1>
         </div>
 
         <a routerLink="/backoffice/companies/create" class="btn btn-primary">
-            + Create company
+            + Voeg bedrijf toe
         </a>
     </div>
 
     @if (isLoading()) {
     <div class="card border-0 shadow-sm">
         <div class="card-body p-4">
-            <p class="text-muted mb-0">Loading companies...</p>
+            <p class="text-muted mb-0">Laden...</p>
         </div>
     </div>
     }
@@ -30,28 +30,36 @@
         @for (company of companies(); track company.id) {
         <div class="col-12 col-md-6 col-xl-4">
             <a [routerLink]="['/backoffice/companies', company.id]" class="text-decoration-none">
-                <article class="company-card card h-100 border-0 shadow-sm">
+                <div class="company-card card h-100 border-0 shadow-sm">
                     <div class="card-body p-4">
-
                         <h2 class="h5 mb-2 text-dark">
                             {{ company.name }}
                         </h2>
 
-                        <p class="text-muted mb-4">
-                            {{ company.address }}
-                        </p>
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div>
+                                <p class="text-muted mb-1">
+                                    {{ company.street }} {{ company.houseNumber }}{{ company.houseNumberAddition }}
+                                </p>
 
-                        <div class="d-flex justify-content-between align-items-center">
-                            <small class="text-muted">
-                                View details
-                            </small>
+                                <p class="text-muted mb-1">
+                                    {{ company.postalCode }} {{ company.city }}
+                                </p>
 
-                            <span class="text-primary fw-semibold">
-                                →
-                            </span>
+                                <p class="text-muted mb-0">
+                                    {{ company.country }}
+                                </p>
+                            </div>
+
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="text-primary fs-5">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </span>
+                            </div>
                         </div>
+
                     </div>
-                </article>
+                </div>
             </a>
         </div>
         }
@@ -63,7 +71,6 @@
             <p class="text-muted mb-4">
                 Create your first company to start managing vacancies.
             </p>
-
             <a routerLink="/backoffice/companies/create" class="btn btn-primary">
                 Create company
             </a>
