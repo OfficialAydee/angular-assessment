@@ -104,6 +104,14 @@ app.delete("/api/companies/:id", (req, res) => {
 
 // Vacancies
 app.get("/api/vacancies", (req, res) => {
+  const { companyId } = req.query;
+
+  if (companyId) {
+    return res.json(
+      vacancies.filter((vacancy) => vacancy.companyId === companyId),
+    );
+  }
+
   res.json(vacancies);
 });
 

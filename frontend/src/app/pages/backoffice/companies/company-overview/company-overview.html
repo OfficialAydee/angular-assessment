@@ -5,9 +5,7 @@
             <h1 class="h3 mb-2">Bedrijven</h1>
         </div>
 
-        <a routerLink="/backoffice/companies/create" class="btn btn-primary">
-            + Voeg bedrijf toe
-        </a>
+        <a routerLink="/backoffice/companies/create" class="btn btn-primary"> + Voeg bedrijf toe </a>
     </div>
 
     @if (isLoading()) {
@@ -32,6 +30,9 @@
             <a [routerLink]="['/backoffice/companies', company.id]" class="text-decoration-none">
                 <div class="company-card card h-100 border-0 shadow-sm">
                     <div class="card-body p-4">
+                        <!-- <div class="company-card-icon">
+
+                        </div> -->
                         <h2 class="h5 mb-2 text-dark">
                             {{ company.name }}
                         </h2>
@@ -39,12 +40,10 @@
                         <div class="d-flex justify-content-between align-items-end">
                             <div>
                                 <p class="text-muted mb-1">
-                                    {{ company.street }} {{ company.houseNumber }}{{ company.houseNumberAddition }}
+                                    {{ company.street }} {{ company.houseNumber}} {{ company.houseNumberAddition }}
                                 </p>
 
-                                <p class="text-muted mb-1">
-                                    {{ company.postalCode }} {{ company.city }}
-                                </p>
+                                <p class="text-muted mb-1">{{ company.postalCode }} {{ company.city }}</p>
 
                                 <p class="text-muted mb-0">
                                     {{ company.country }}
@@ -57,7 +56,6 @@
                                 </span>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </a>
@@ -68,12 +66,8 @@
     <div class="card border-0 shadow-sm">
         <div class="card-body p-5 text-center">
             <h2 class="h5 mb-2">No companies found</h2>
-            <p class="text-muted mb-4">
-                Create your first company to start managing vacancies.
-            </p>
-            <a routerLink="/backoffice/companies/create" class="btn btn-primary">
-                Create company
-            </a>
+            <p class="text-muted mb-4">Create your first company to start managing vacancies.</p>
+            <a routerLink="/backoffice/companies/create" class="btn btn-primary"> Create company </a>
         </div>
     </div>
     }

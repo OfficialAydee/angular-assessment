@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h2 class="modal-title h5">{{ title }}</h2>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+    <p class="mb-0 text-muted">{{ message }}</p>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">
+        Annuleren
+    </button>
+    <button type="button" class="btn btn-danger" (click)="activeModal.close(true)">
+        Verwijderen
+    </button>
+</div>

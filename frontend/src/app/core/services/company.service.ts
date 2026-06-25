@@ -8,28 +8,25 @@ import { CompanyModel } from '../models/company/company.model';
 })
 export class CompanyService {
   private readonly http = inject(HttpClient);
+  private readonly apiUrl = `${environment.apiUrl}/companies`;
 
   getCompanies() {
-    return this.http.get<CompanyModel[]>(`${environment.apiUrl}/companies`);
+    return this.http.get<CompanyModel[]>(`${this.apiUrl}`);
+  }
+
+  getCompany(id: string) {
+    return this.http.get<CompanyModel>(`${this.apiUrl}/${id}`);
   }
 
   createCompany(company: CompanyModel) {
-    return this.http.post<CompanyModel>(
-      `${environment.apiUrl}/companies`,
-
-      company,
-    );
+    return this.http.post<CompanyModel>(`${this.apiUrl}`, company);
   }
 
   updateCompany(company: CompanyModel) {
-    return this.http.put<CompanyModel>(
-      `${environment.apiUrl}/companies/${company.id}`,
-
-      company,
-    );
+    return this.http.put<CompanyModel>(`${this.apiUrl}/${company.id}`, company);
   }
 
   deleteCompany(id: string) {
-    return this.http.delete(`${environment.apiUrl}/companies/${id}`);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
