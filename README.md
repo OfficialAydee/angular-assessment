@@ -108,6 +108,7 @@ http://localhost:4200
 
 ### 4. Beschikbare pagina's
 
+
 | Route                                                        | Omschrijving                                          |
 | ------------------------------------------------------------ | ----------------------------------------------------- |
 | `/jobs`                                                      | Publiek overzicht van bedrijven met actieve vacatures |
@@ -122,6 +123,7 @@ http://localhost:4200
 | `/backoffice/companies/:companyId/vacancies/:vacancyId`      | Detailpagina van een vacature                         |
 | `/backoffice/companies/:companyId/vacancies/:vacancyId/edit` | Vacature bewerken                                     |
 
+
 ### Opmerking
 
 De mock API maakt gebruik van in-memory opslag. Wijzigingen blijven actief zolang de server draait en worden teruggezet naar de initiële dataset na een herstart van de API.
@@ -131,9 +133,9 @@ De mock API maakt gebruik van in-memory opslag. Wijzigingen blijven actief zolan
 ### User Story 1: Als backoffice medewerker wil ik bedrijven en vacatures beheren
 
 1. Ga naar `http://localhost:4200`.
-2. Klik in de sidebar op **Companies**.
+2. Klik in de sidebar op **Bedrijven**.
 3. Controleer of de bedrijven als kaarten worden getoond.
-4. Klik op **Nieuw bedrijf** / **Create company**.
+4. Klik op **Voeg bedrijf toe**.
 5. Vul minimaal de verplichte bedrijfsgegevens in.
 6. Klik op **Opslaan**.
 7. Controleer of het nieuwe bedrijf zichtbaar is in het overzicht.
@@ -173,8 +175,8 @@ De mock API maakt gebruik van in-memory opslag. Wijzigingen blijven actief zolan
 2. Klik bij het toegestane bedrijf op **Vacature plaatsen**.
 3. Controleer of het formulier opent.
 4. Klik op **Vacature plaatsen** zonder titel in te vullen.
-5. Controleer of de validatiemelding **Titel is verplicht** zichtbaar is.
-6. Vul minimaal een titel in.
+5. Controleer of de validatiemelding **Titel is verplicht** en **Omschrijving is verplicht** zichtbaar is.
+6. Vul minimaal een titel en omschrijving in.
 7. Vul eventueel locatie, salaris en omschrijving in.
 8. Klik op **Vacature plaatsen**.
 9. Controleer of je teruggaat naar het vacatureoverzicht.
