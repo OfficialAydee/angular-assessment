@@ -1,0 +1,40 @@
+<form [formGroup]="vacancyForm" (ngSubmit)="submit()">
+    <div class="mb-3">
+        <label class="form-label">Titel *</label>
+        <input type="text" class="form-control" formControlName="title" placeholder="Bijvoorbeeld: Angular Developer" />
+        @if (vacancyForm.controls.title.touched && vacancyForm.controls.title.invalid) {
+        <small class="text-danger">Titel is verplicht.</small>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Locatie</label>
+            <input type="text" class="form-control" formControlName="location" placeholder="Bijvoorbeeld: Rotterdam" />
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Salaris</label>
+            <input type="text" class="form-control" formControlName="salary" placeholder="Bijvoorbeeld: €3.500 - €5.000" />
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <label class="form-label">Omschrijving</label>
+        <textarea rows="6" class="form-control" formControlName="description" placeholder="Beschrijf de vacature..."></textarea>
+    </div>
+
+    @if (showActiveField()) {
+    <div class="form-check form-switch mb-4">
+        <input id="isActive" type="checkbox" class="form-check-input" formControlName="isActive" />
+        <label class="form-check-label" for="isActive"> Vacature actief </label>
+    </div>
+    }
+
+    <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary">
+            {{ submitLabel() }}
+        </button>
+        <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">Annuleren</button>
+    </div>
+</form>
