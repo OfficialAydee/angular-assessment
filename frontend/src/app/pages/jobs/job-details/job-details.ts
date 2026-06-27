@@ -39,7 +39,7 @@ export class JobDetails {
         this.loadVacancy();
       },
       error: () => {
-        this.errorMessage.set('Bedrijf kon niet worden geladen.');
+        this.errorMessage.set('Informatie kon niet worden geladen.');
         this.isLoading.set(false);
       },
     });

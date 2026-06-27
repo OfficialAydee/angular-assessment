@@ -74,6 +74,16 @@ export const routes: Routes = [
           import('./pages/jobs/job-overview/job-overview').then((m) => m.JobOverview),
       },
       {
+        path: 'jobs/:companyId/vacancies/create',
+        title: 'Create vacancy | Vacaturepunt',
+        loadComponent: () => import('./pages/jobs/job-create/job-create').then((m) => m.JobCreate),
+      },
+      {
+        path: 'jobs/:companyId/vacancies/:vacancyId/edit',
+        title: 'Edit vacancy | Vacaturepunt',
+        loadComponent: () => import('./pages/jobs/job-edit/job-edit').then((m) => m.JobEdit),
+      },
+      {
         path: 'jobs/:companyId/vacancies/:vacancyId',
         title: 'Vacancy details | Vacaturepunt',
         loadComponent: () =>
