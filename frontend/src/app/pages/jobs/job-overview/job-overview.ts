@@ -5,6 +5,7 @@ import { VacancyModel } from '../../../core/models/vacancy/vacancy.model';
 import { CompanyService } from '../../../core/services/company.service';
 import { VacancyService } from '../../../core/services/vacancy.service';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../core/services/auth';
 
 @Component({
   selector: 'app-job-overview',
@@ -15,6 +16,8 @@ import { RouterLink } from '@angular/router';
 export class JobOverview {
   private readonly companyService = inject(CompanyService);
   private readonly vacancyService = inject(VacancyService);
+
+  private readonly authService = inject(AuthService);
 
   companies = signal<CompanyModel[]>([]);
   vacancies = signal<VacancyModel[]>([]);
@@ -67,5 +70,9 @@ export class JobOverview {
         this.isLoading.set(false);
       },
     });
+  }
+
+  canCreateVacancy(companyId: string): boolean {
+    return this.authService.canManageCompany(companyId);
   }
 }

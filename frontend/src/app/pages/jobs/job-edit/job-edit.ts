@@ -1,25 +1,23 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink, ActivatedRoute, Router } from '@angular/router';
-import { VacancyService } from '../../../../core/services/vacancy.service';
-import {
-  VacancyForm,
-  VacancyFormData,
-} from '../../../../shared/components/vacancy-form/vacancy-form';
-import { VacancyModel } from '../../../../core/models/vacancy/vacancy.model';
+import { VacancyModel } from '../../../core/models/vacancy/vacancy.model';
+import { VacancyService } from '../../../core/services/vacancy.service';
+import { VacancyForm, VacancyFormData } from '../../../shared/components/vacancy-form/vacancy-form';
 
 @Component({
-  selector: 'app-vacancy-edit',
+  selector: 'app-job-edit',
   imports: [RouterLink, VacancyForm],
-  templateUrl: './vacancy-edit.html',
-  styleUrl: './vacancy-edit.scss',
+  templateUrl: './job-edit.html',
+  styleUrl: './job-edit.scss',
 })
-export class VacancyEdit {
+export class JobEdit {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly vacancyService = inject(VacancyService);
 
   companyId = '';
   vacancyId = '';
+
   vacancy = signal<VacancyModel | null>(null);
   isLoading = signal(false);
   errorMessage = signal<string | null>(null);
@@ -51,20 +49,16 @@ export class VacancyEdit {
         id: this.vacancyId,
         companyId: this.companyId,
         ...value,
+        isActive: true,
       })
       .subscribe({
         next: () => {
-          this.router.navigate([
-            '/backoffice/companies',
-            this.companyId,
-            'vacancies',
-            this.vacancyId,
-          ]);
+          this.router.navigate(['/jobs', this.companyId, 'vacancies', this.vacancyId]);
         },
       });
   }
 
   cancel() {
-    this.router.navigate(['/backoffice/companies', this.companyId, 'vacancies', this.vacancyId]);
+    this.router.navigate(['/jobs', this.companyId, 'vacancies', this.vacancyId]);
   }
 }

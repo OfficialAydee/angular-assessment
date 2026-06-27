@@ -13,9 +13,7 @@ export class CompanyOverview {
   private readonly companyService = inject(CompanyService);
 
   companies = signal<CompanyModel[]>([]);
-
   isLoading = signal(false);
-
   errorMessage = signal<string | null>(null);
 
   ngOnInit() {
@@ -24,19 +22,16 @@ export class CompanyOverview {
 
   private loadCompanies() {
     this.isLoading.set(true);
-
     this.errorMessage.set(null);
 
     this.companyService.getCompanies().subscribe({
       next: (companies) => {
         this.companies.set(companies);
-
         this.isLoading.set(false);
       },
 
       error: () => {
-        this.errorMessage.set('Unable to load companies.');
-
+        this.errorMessage.set('Informatie kon niet worden geladen.');
         this.isLoading.set(false);
       },
     });

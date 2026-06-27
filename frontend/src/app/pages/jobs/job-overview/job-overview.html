@@ -32,9 +32,15 @@
                             {{ company.street }} {{ company.houseNumber }}{{ company.houseNumberAddition }}
                         </p>
 
-                        <p class="text-muted mb-0">
+                        <p class="text-muted mb-1">
                             {{ company.postalCode }} {{ company.city }}, {{ company.country }}
                         </p>
+
+                        @if (canCreateVacancy(company.id)) {
+                        <a [routerLink]="['/jobs', company.id, 'vacancies', 'create']" class="btn btn-primary btn-sm mb-1">
+                            Vacature plaatsen
+                        </a>
+                        }
                     </div>
 
                     <div class="text-end">

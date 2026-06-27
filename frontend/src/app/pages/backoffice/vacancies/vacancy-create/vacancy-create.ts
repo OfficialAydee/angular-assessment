@@ -1,41 +1,29 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { VacancyService } from '../../../../core/services/vacancy.service';
+import {
+  VacancyForm,
+  VacancyFormData,
+} from '../../../../shared/components/vacancy-form/vacancy-form';
 
 @Component({
   selector: 'app-vacancy-create',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [RouterLink, VacancyForm],
   templateUrl: './vacancy-create.html',
   styleUrl: './vacancy-create.scss',
 })
 export class VacancyCreate {
-  private readonly fb = inject(FormBuilder);
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly vacancyService = inject(VacancyService);
+  readonly companyId = this.route.snapshot.paramMap.get('companyId') ?? '';
 
-  companyId = this.route.snapshot.paramMap.get('companyId') ?? '';
-
-  vacancyForm = this.fb.nonNullable.group({
-    title: ['', Validators.required],
-    description: ['', Validators.required],
-    location: ['', Validators.required],
-    salary: ['', Validators.required],
-    isActive: [true],
-  });
-
-  submit() {
-    if (this.vacancyForm.invalid) {
-      this.vacancyForm.markAllAsTouched();
-      return;
-    }
-
+  createVacancy(value: VacancyFormData) {
     this.vacancyService
       .createVacancy({
         id: '',
         companyId: this.companyId,
-        ...this.vacancyForm.getRawValue(),
+        ...value,
       })
 
       .subscribe({
@@ -43,5 +31,9 @@ export class VacancyCreate {
           this.router.navigate(['/backoffice/companies', this.companyId]);
         },
       });
+  }
+
+  cancel() {
+    this.router.navigate(['/backoffice/companies', this.companyId]);
   }
 }
