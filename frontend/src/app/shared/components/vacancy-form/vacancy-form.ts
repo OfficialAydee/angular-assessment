@@ -25,7 +25,7 @@ export class VacancyForm {
     title: ['', Validators.required],
     location: [''],
     salary: [''],
-    description: [''],
+    description: ['', Validators.required],
     isActive: [true],
   });
 

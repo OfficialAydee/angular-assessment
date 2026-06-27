@@ -22,6 +22,9 @@
     <div class="mb-4">
         <label class="form-label">Omschrijving</label>
         <textarea rows="6" class="form-control" formControlName="description" placeholder="Beschrijf de vacature..."></textarea>
+        @if (vacancyForm.controls.description.touched && vacancyForm.controls.description.invalid) {
+        <small class="text-danger">Omschrijving is verplicht.</small>
+        }
     </div>
 
     @if (showActiveField()) {
